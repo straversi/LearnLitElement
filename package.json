@@ -1,0 +1,17 @@
+{
+  "name": "learn-lit-element",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "eleventy --serve"
+  },
+  "dependencies": {
+    "prismjs": "^1.19.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1"
+  },
+  "author": "Steven Traversi",
+  "license": "ISC"
+}

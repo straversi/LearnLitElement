@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-size: 17px;
+}
+* {
+  font-family: -apple-system,BlinkMacSystemFont;
+  line-height: 1.5;
+}
+h1,h2,h3,h4,h5,h6 {
+  color: #202023;
+}
+/* Copied from the Prism theme */
+code {
+  color: #90a4ae;
+	background: #fafafa;
+  font-family: Roboto Mono, monospace;
+  font-size: 0.9em;
+  border-radius: 0.2em;
+	padding: 0.1em;
+}
+
+#hook {
+  background: #f7f7f9;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#hook > p {
+  color: #505053;
+}
+.section {
+  border-top: 2px solid #f0f0f3;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.section > .example, .section > code-example {
+  max-width: 900px;
+}
+.section > * {
+  margin: 25px auto !important; /* Override prism-material-light.css
+                                 * for pre blocks */
+  max-width: 700px;
+}
+
+.example {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+}
+.demo {
+  border: 3px solid #fafafa;
+  border-radius: 0px 5px 5px 0px; /* rounded right side */
+  padding-left: 24px;
+  padding-bottom: 12px;
+}
