@@ -15,6 +15,9 @@
 
   Define a JavaScript class that extends `LitElement`. Make a custom element and name it with the `@customElement` decorator. Custom element names must contain a dash.
 
+  <code-switcher ts>
+  <div slot="ts">
+
   ```typescript
   import {customElement, LitElement} from 'lit-element';
 
@@ -22,6 +25,16 @@
   class Counter extends LitElement {
   }
   ```
+  
+  </div>
+  <div slot="js">
+
+  ```javascript
+  not written yet.
+  ```
+
+  </div>
+  </code-switcher>
 
   The element `<cool-counter>` is now usable in HTML.
 
@@ -69,12 +82,16 @@
   JavaScript supports template literals, also called template strings. They’re like strings, except they use backticks instead of quotes, and you can embed expressions in them.
 
   ```typescript
-  `${100 + 1} dalmatians` === '101 dalmatians'
+  `${100 + 1} dalmatians` === "101 dalmatians"
   ```
 
   A tagged template literal has an expression (called the tag) immediately preceding the template literal. The tags, which are usually functions, can mess with the template literal before it finishes evaluating. Defining a tag is beyond the scope of this tutorial.
 
   In LitElement, the html tag denotes indicates that the template contains HTML. The render return expression can contain any valid HTML.
+
+  <div style="text-align: right">
+    <a href="https://lit-element.polymer-project.org/guide/templates">Learn more about templates</a>
+  </div>
 
 </div>
 
@@ -118,6 +135,10 @@
   </code-example>
 
   These styles only apply to the custom element. They won’t affect any other elements in the DOM. This often enables simpler CSS selectors without fear of messing up other elements on the page.
+
+  <div style="text-align: right">
+    <a href="https://lit-element.polymer-project.org/guide/styles">Learn more about styles</a>
+  </div>
 
 </div>
 
@@ -166,15 +187,12 @@
 
   Properties decorated with `@property` can be set from HTML with an attribute.
 
-  <div class="example">
-
   ```html
   <cool-counter num="4"></cool-counter>
   ```
 
-  <div class="demo">
-    <cool-counter-3 num="4"></cool-counter-3>
-  </div>
+  <div style="text-align: right">
+    <a href="https://lit-element.polymer-project.org/guide/properties">Learn more about properties</a>
   </div>
 
 </div>
@@ -230,6 +248,10 @@
   ```typescript
   html`<button @click=${() => this.num += 1}>Add</button>`
   ```
+
+  <div style="text-align: right">
+    <a href="https://lit-element.polymer-project.org/guide/events">Learn more about events</a>
+  </div>
 
 </div>
 
@@ -329,4 +351,8 @@
     <img slot="love" width="128" src="https://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/snowboarder.png" />
   </my-preferences>
   </code-example>
+
+  <div style="text-align: right">
+    <a href="https://lit-element.polymer-project.org/guide/templates#slots">Learn more about slots</a>
+  </div>
 </div>

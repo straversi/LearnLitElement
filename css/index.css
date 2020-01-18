@@ -35,22 +35,11 @@ code {
   padding-left: 50px;
   padding-right: 50px;
 }
-.section > .example, .section > code-example {
+.section > code-example {
   max-width: 900px;
 }
 .section > * {
   margin: 25px auto !important; /* Override prism-material-light.css
                                  * for pre blocks */
   max-width: 700px;
-}
-
-.example {
-  display: grid;
-  grid-template-columns: 5fr 2fr;
-}
-.demo {
-  border: 3px solid #fafafa;
-  border-radius: 0px 5px 5px 0px; /* rounded right side */
-  padding-left: 24px;
-  padding-bottom: 12px;
 }
