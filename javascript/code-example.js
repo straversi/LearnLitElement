@@ -1,5 +1,9 @@
 import {LitElement, html, css} from 'https://unpkg.com/lit-element?module';
 
+/**
+ * A pre block next to a demo. The pre block can switch between
+ * TS and JS.
+ */
 class CodeExample extends LitElement {
   static get properties() {
     return {
@@ -44,6 +48,9 @@ class CodeExample extends LitElement {
 }
 customElements.define('code-example', CodeExample);
 
+/**
+ * A pre block that can switch between typescript and javascript.
+ */
 class CodeSwitcher extends LitElement {
   static get properties() {
     return {
@@ -104,10 +111,36 @@ class CodeSwitcher extends LitElement {
 }
 customElements.define('code-switcher', CodeSwitcher);
 
+class InlineSwitcher extends LitElement {
+  static get properties() {
+    return {
+      ts: { type: Boolean }
+    }
+  }
+  constructor() {
+    super();
+    this.ts = false;
+  }
+  static get styles() {
+    return css`
+      .hidden {
+        display: none;
+      }
+    `;      
+  }
+  render() {
+    return html`
+      <slot name="ts" class="${this.ts ? '' : 'hidden'}"></slot>
+      <slot name="js" class="${this.ts ? 'hidden' : ''}"></slot>
+    `
+  }
+}
+customElements.define('inline-switcher', InlineSwitcher);
+
 /* Switch the language of every code block. */
 document.addEventListener('ts', (e) => {
   console.log(e);
-  document.querySelectorAll(['code-example, code-switcher']).forEach(el => {
+  document.querySelectorAll(['code-example, code-switcher, inline-switcher']).forEach(el => {
     el.ts = e.detail.ts;
   })
 })

@@ -1,19 +1,13 @@
 # README
 
-Syntax highlighting not working? Try throwing
+Test it out:
 
-```javascript
-css`a { color: blue; }`;
-```
+`npm run dev`
 
-or 
+Syntax highlighting not working? Try uncommenting the following
+block and let eleventy rebuild + error out. For some reason this
+seems to kick the syntax highlighter...
 
-<!-- This file is generated, so keep this commented or else cause an error. -->
-<!-- ```js-templates
+<!-- ```error
 css`a { color: blue; }`;
 ``` -->
-
-into a file and regenerate until it does. wtf.
-
-Theory: js-templates is not a language, which
-causes an error. Is this triggering something?

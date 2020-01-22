@@ -13,7 +13,7 @@
 
   ## Make a custom element
 
-  Define a JavaScript class that extends `LitElement`. Make a custom element and name it with the `@customElement` decorator. Custom element names must contain a dash.
+  Define a JavaScript class that extends `LitElement`. Make a custom element and name it with <inline-switcher ts><span slot="ts">the `@customElement` decorator</span><span slot="js">`customElements.define`</span></inline-switcher>. Custom element names must contain a dash.
 
   <code-switcher ts>
   <div slot="ts">
@@ -30,7 +30,11 @@
   <div slot="js">
 
   ```javascript
-  not written yet.
+  import {LitElement} from 'lit-element';
+
+  class Counter extends LitElement {
+  }
+  customElements.define('cool-counter', Counter);
   ```
 
   </div>
@@ -72,7 +76,17 @@
   <div slot="js">
 
   ```javascript
-  have not written yet
+  import {LitElement, html} from 'lit-element';
+
+  class Counter extends LitElement {
+    render() {
+      return html`
+        <h2>Counter</h2>
+        <p>count: 0</p>
+      `;
+    }
+  }
+  customElements.define('cool-counter', Counter);
   ```
   
   </div>
@@ -127,7 +141,24 @@
   <div slot="js">
 
   ```javascript
-  have not written yet
+  import {LitElement, html, css}
+    from 'lit-element';
+
+  class Counter extends LitElement {
+    static get styles() {
+      return css`
+        h2 { color: #6f42c1; }
+      `;
+    }
+
+    render() {
+      return html`
+        <h2>Counter</h2>
+        <p>count: 0</p>
+      `;
+    }
+  }
+  customElements.define('cool-counter', Counter);
   ```
   
   </div>
@@ -146,7 +177,7 @@
 
   ## Properties
 
-  Add a property to a custom element by decorating a class property with `@property`. LitElement will then observe it and re-render the custom element when it changes.
+  Add an observed property to a custom element by <inline-switcher ts><span slot="ts">decorating a class property with `@property`</span><span slot="js">defining the `properties` getter</span></inline-switcher>. LitElement will then observe it and re-render the custom element when it changes.
 
   Use a property in a template by embedding it with `${this.propertyName}` syntax.
 
@@ -178,14 +209,42 @@
   <div slot="js">
 
   ```javascript
-  have not written yet
+  import {LitElement, html, css}
+    from 'lit-element'
+
+  class Counter extends LitElement {
+    static get properties() {
+      return {
+        num: { type: Number }
+      }
+    }
+
+    constructor() {
+      super();
+      this.num = 0;
+    }
+
+    static get styles() {
+      return css`
+        h2 { color: #6f42c1; }
+      `;
+    }
+
+    render() {
+      return html`
+        <h2>Counter</h2>
+        <p>count: ${this.num}</p>
+      `;
+    }
+  }
+  customElements.define('cool-counter', Counter);
   ```
   
   </div>
   <cool-counter-3 slot="demo"></cool-counter-3>
   </code-example>
 
-  Properties decorated with `@property` can be set from HTML with an attribute.
+  Properties <inline-switcher ts><span slot="ts">decorated with `@property`</span><span slot="js">returned by the `properties` getter</span></inline-switcher> can be set from HTML with an attribute.
 
   ```html
   <cool-counter num="4"></cool-counter>
@@ -236,7 +295,40 @@
   <div slot="js">
 
   ```javascript
-  have not written yet
+  import {LitElement, html, css}
+    from 'lit-element'
+
+  class Counter extends LitElement {
+    static get properties() {
+      return {
+        num: { type: Number }
+      }
+    }
+
+    constructor() {
+      super();
+      this.num = 0;
+    }
+
+    static get styles() {
+      return css`
+        h2 { color: #6f42c1; }
+      `;
+    }
+
+    increment() {
+      this.num += 1;
+    }
+
+    render() {
+      return html`
+        <h2>Counter</h2>
+        <p>count: ${this.num}</p>
+        <button @click=${this.increment}>Add</button>
+      `;
+    }
+  }
+  customElements.define('cool-counter', Counter);
   ```
   
   </div>
@@ -294,7 +386,28 @@
   <div slot="js">
 
   ```javascript
-  have not written yet
+  import {LitElement, html} from 'lit-element';
+
+  class ILove extends LitElement {
+    render() {
+      return html`
+        <h2>I love</h2>
+        <slot></slot>
+        </h2>only!</h2>
+      `;
+    }
+  }
+  customElements.define('i-love', ILove);
+  ```
+
+  ```html
+  <!-- HTML -->
+  <i-love>
+    <p>snowboarding</p>
+  </i-love>
+  <i-love>
+    <img src="/snowboarder.png" />
+  </i-love>
   ```
   
   </div>
@@ -342,7 +455,27 @@
   <div slot="js">
 
   ```javascript
-  have not written yet
+  import {LitElement, html} from 'lit-element';
+
+  class MyPreferences extends LitElement {
+    render() {
+      return html`
+        <h2>I like</h2>
+        <slot name="like"></slot>
+        </h2>but I love</h2>
+        <slot name="love"></slot>
+      `;
+    }
+  }
+  customElements.define('my-preferences', MyPreferences);
+  ```
+
+  ```html
+  <!-- HTML -->
+  <my-preferences>
+    <p slot="like">skiing</p>
+    <img slot="love" src="/snowboarder.png" />
+  </my-preferences>
   ```
   
   </div>

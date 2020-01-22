@@ -1,3 +1,8 @@
+/**
+ * This file contains custom elements for the demos throughout
+ * the tutorial.
+ */
+
 import {LitElement, html, css} from 'https://unpkg.com/lit-element?module';
 
 /*
