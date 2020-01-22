@@ -9,25 +9,25 @@
 </div>
 
 <div class="section">
-{% include demos/make-a-custom-element.md %}
+{% include sections/make-a-custom-element.md %}
 </div>
 
 <div class="section">
-{% include demos/templates.md %}
+{% include sections/templates.md %}
 </div>
 
 <div class="section">
-{% include demos/styles.md %}
+{% include sections/styles.md %}
 </div>
 
 <div class="section">
-{% include demos/properties.md %}
+{% include sections/properties.md %}
 </div>
 
 <div class="section">
-{% include demos/events.md %}
+{% include sections/events.md %}
 </div>
 
 <div class="section">
-{% include demos/slots.md %}
+{% include sections/slots.md %}
 </div>

@@ -1,3 +1,7 @@
+/**
+ * Helper elements for switching between TS and JS.
+ */
+
 import {LitElement, html, css} from 'https://unpkg.com/lit-element?module';
 
 /**
