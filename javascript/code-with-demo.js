@@ -1,10 +1,9 @@
 import {LitElement, html, css} from 'https://unpkg.com/lit-element?module';
 
 /**
- * A pre block next to a demo. The pre block can switch between
- * TS and JS.
+ * Base class that adds the `ts` property. 
  */
-class CodeExample extends LitElement {
+class JsTsSwitcher extends LitElement {
   static get properties() {
     return {
       ts: { type: Boolean }
@@ -12,8 +11,14 @@ class CodeExample extends LitElement {
   }
   constructor() {
     super();
-    this.ts = false;
+    this.ts = true;
   }
+}
+
+/**
+ * A code-block-switcher next to a demo.
+ */
+class CodeWithDemo extends JsTsSwitcher {
   static get styles() {
     return css`
       :host {
@@ -35,10 +40,10 @@ class CodeExample extends LitElement {
   render() {
     return html`
     <div id="container">
-      <code-switcher .ts=${this.ts}>
+      <code-block-switcher .ts=${this.ts}>
         <slot name="ts" slot="ts"></slot>
         <slot name="js" slot="js"></slot>
-      </code-switcher>
+      </code-block-switcher>
       <div id="demo">
         <slot name="demo"></slot>
       </div>
@@ -46,21 +51,12 @@ class CodeExample extends LitElement {
     `;
   }
 }
-customElements.define('code-example', CodeExample);
+customElements.define('code-with-demo', CodeWithDemo);
 
 /**
- * A pre block that can switch between typescript and javascript.
+ * A block with tabs to switch between typescript and javascript.
  */
-class CodeSwitcher extends LitElement {
-  static get properties() {
-    return {
-      ts: { type: Boolean }
-    }
-  }
-  constructor() {
-    super();
-    this.ts = false;
-  }
+class CodeBlockSwitcher extends JsTsSwitcher {
   static get styles() {
     return css`
       :host {
@@ -109,18 +105,12 @@ class CodeSwitcher extends LitElement {
     `;
   }
 }
-customElements.define('code-switcher', CodeSwitcher);
+customElements.define('code-block-switcher', CodeBlockSwitcher);
 
-class InlineSwitcher extends LitElement {
-  static get properties() {
-    return {
-      ts: { type: Boolean }
-    }
-  }
-  constructor() {
-    super();
-    this.ts = false;
-  }
+/**
+ * A simple inline switch between TS and JS.
+ */
+class InlineSwitcher extends JsTsSwitcher {
   static get styles() {
     return css`
       .hidden {
@@ -139,8 +129,7 @@ customElements.define('inline-switcher', InlineSwitcher);
 
 /* Switch the language of every code block. */
 document.addEventListener('ts', (e) => {
-  console.log(e);
-  document.querySelectorAll(['code-example, code-switcher, inline-switcher']).forEach(el => {
+  document.querySelectorAll(['code-with-demo, code-block-switcher, inline-switcher']).forEach(el => {
     el.ts = e.detail.ts;
   })
 })

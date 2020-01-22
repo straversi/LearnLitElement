@@ -35,7 +35,7 @@ code {
   padding-left: 50px;
   padding-right: 50px;
 }
-.section > code-example {
+.section > code-with-demo {
   max-width: 900px;
 }
 .section > * {
